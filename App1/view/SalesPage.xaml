@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="App1.SalesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="130" />
+        </Grid.RowDefinitions>
+
+        
+        <Grid Name="tableGrid" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <controls:DataGrid Grid.Column="0" Name="dataGrid" ItemsSource="{x:Bind sview}" AutoGenerateColumns="False" IsReadOnly="True"
+                                CanUserReorderColumns="False" CanUserResizeColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+                    <controls:DataGrid.Columns >
+                        <controls:DataGridTextColumn Header="Дата продажи" Binding="{Binding datetime}" />
+                        <controls:DataGridTextColumn Header="Продавец" Binding="{Binding manName}" />
+                        <controls:DataGridTextColumn Header="Общая сумма продажи" Binding="{Binding summa}" />
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
+
+            <controls:DataGrid Grid.Column="1" Name="dataGridContent" ItemsSource="{x:Bind rows}" AutoGenerateColumns="False" IsReadOnly="True"
+                                CanUserReorderColumns="False" CanUserResizeColumns="False" Margin="30 0 30 30">
+                    <controls:DataGrid.Columns >
+                        <controls:DataGridTextColumn Header="Товар" Binding="{Binding name}" />
+                        <controls:DataGridTextColumn Header="Цена" Binding="{Binding price}" />
+                        <controls:DataGridTextColumn Header="Количество" Binding="{Binding amount}" />
+                        <controls:DataGridTextColumn Header="Сумма" Binding="{Binding sum}" />
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
+
+
+            </Grid>
+
+        <TextBlock Grid.Row="1" Text="89" Name="generalIncomeTextBlock" HorizontalAlignment="Center" FontSize="20" TextWrapping="WrapWholeWords"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Добавить продажу" HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="Button_Click" Margin="0,0,0,66"  />
+            <Button Grid.Column="1" Name="printBtn" Content="Печать" HorizontalAlignment="Center"  Margin="0,0,0,66" VerticalAlignment="Stretch" Click="Button_Click_1" />
+            <Button Grid.Column="2" Content="Экспорт в Word" HorizontalAlignment="Center"  Margin="0,0,0,66" VerticalAlignment="Stretch" Click="Button_Click_2"  />
+
+            <StackPanel Grid.Column="3" Orientation="Vertical">
+                <CalendarDatePicker Name="datePic1" PlaceholderText="Выберите начало " Margin="5 5 5 5"  HorizontalAlignment="Stretch"/>
+                <CalendarDatePicker Name="datePic2" PlaceholderText="Выберите окончание " Margin="5 5 5 5"  HorizontalAlignment="Stretch" />
+                <StackPanel Orientation="Horizontal" >
+                    <Button Name="dateFiltBtn"  Content="Отбор"  Margin="5 5 5 5"  HorizontalAlignment="Stretch" Click="dateFiltBtn_Click"  />
+                    <Button Name="clearFiltBtn"  Content="Сброс"  Margin="5 5 5 5"  HorizontalAlignment="Stretch" Click="clearFiltBtn_Click"   />
+                </StackPanel>
+                
+            </StackPanel>
+                    
+        </Grid>
+    </Grid>
+</Page>

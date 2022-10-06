@@ -1,0 +1,37 @@
+﻿Grid myGrid = new Grid();
+
+            int N = 3, M = 40;
+            for (int i = 0; i < N; i++)
+            {
+                ColumnDefinition col = new ColumnDefinition();
+                col.Width = new GridLength(1, GridUnitType.Star);
+                myGrid.ColumnDefinitions.Add(col);
+
+            }
+
+            for (int i = 0; i < M; i++)
+            {
+
+                RowDefinition row = new RowDefinition();
+                row.Height = new GridLength(5, GridUnitType.Star);
+                myGrid.RowDefinitions.Add(row);
+            }
+
+            
+
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    Button btn = new Button();
+                    btn.Margin = new Thickness(5);
+                    btn.Height = 100;
+                    btn.HorizontalAlignment = HorizontalAlignment.Center;
+                    btn.VerticalAlignment = VerticalAlignment.Center;
+                    btn.Width = 100;
+                    btn.Content = $"{i + 1} - {j + 1}";
+                    myGrid.Children.Add(btn);
+                    Grid.SetColumn(btn, j);
+                    Grid.SetRow(btn, i);
+                }
+            }
