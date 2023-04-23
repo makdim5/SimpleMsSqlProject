@@ -371,7 +371,7 @@ namespace CourseWorkDB.model
 
         public static void UpdateDBCollection(int saleId)
         {
-            ds = DB_Worker.ExecuteTableCommand($"execute getSaleCont {saleId}");
+            ds = DB_Worker.ExecuteTableCommand($"select * from getSalesContent({saleId})");
             dt = ds.Tables[0];
             context = new List<SalesContentViewRow>();
             foreach (DataRow item in dt.Rows)

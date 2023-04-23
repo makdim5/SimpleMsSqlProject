@@ -27,13 +27,13 @@ namespace CourseWorkDB
         public SalesPage()
         {
             this.InitializeComponent();
-            //SalesViewManager.UpdateDBCollection();
-            //sview = SalesViewManager.sales;
+            SalesViewManager.UpdateDBCollection();
+            sview = SalesViewManager.sales;
 
-            //SalesContentViewRowManager.UpdateDBCollection(10);
-            //rows = SalesContentViewRowManager.context;
+            SalesContentViewRowManager.UpdateDBCollection(10);
+            rows = SalesContentViewRowManager.context;
 
-            //generalIncomeTextBlock.Text = $"Итого заработано: {SalesViewManager.GetGeneralIncome(sview)}";
+            generalIncomeTextBlock.Text = $"Итого заработано: {SalesViewManager.GetGeneralIncome(sview)}";
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
